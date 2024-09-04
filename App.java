@@ -16,10 +16,9 @@ public class App {
             System.out.println("FIBO(" + n + ") = " + result + ", Iterations: " + iterations + ", Time: " + (endTime - startTime) + " ms");
         }
     }
-}
 
-    public class FibonacciIterative {
 
+    
     public static long fibo(int n) {
         if (n <= 1) {
             return n;
