@@ -7,37 +7,33 @@ public class App {
     private static long iterations = 0;
 
     public static void main(String[] args) {
-        int[] sizes = {32, 2048, 1048576};
-
-        for (int size : sizes) {
-            
-
-            long startTime = System.currentTimeMillis();
+        int[] testValues = {4, 8, 16, 32, 128, 1000, 10000};
+        for (int n : testValues) {
             iterations = 0;
-            pow(2,3);
-            //maxValue1(array);
-           // maxValue2(array,0,array.length-1);
+            long startTime = System.currentTimeMillis();
+            long result = fibo(n);
             long endTime = System.currentTimeMillis();
-            System.out.println("Size: " + size + ", Iterations mergeSort: " + iterations + ", Time: " + (endTime - startTime) + " ms");
+            System.out.println("FIBO(" + n + ") = " + result + ", Iterations: " + iterations + ", Time: " + (endTime - startTime) + " ms");
         }
-       
-
     }
+}
 
-    public static long pow(int a, int n) {
-        if (n == 0) {
+    public class FibonacciIterative {
+
+    public static long fibo(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        long[] f = new long[n + 1];
+        f[0] = 0;
+        f[1] = 1;
+        for (int i = 2; i <= n; i++) {
             iterations++;
-            return 1;
-        } else {
-            long x = pow(a, n / 2);
-            if (n % 2 == 0) {
-                iterations++;
-                return x * x;
-            } else {
-                iterations++;
-                return a * x * x;
-            }
+            f[i] = f[i - 1] + f[i - 2];
         }
+        return f[n];
     }
+
+
 
 }
